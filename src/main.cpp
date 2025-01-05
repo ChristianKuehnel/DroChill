@@ -11,25 +11,27 @@ int move_interval = 12; // with lower interval  notify(): << esp_ble_gatts_send_
 int loop_interval = MINUTE * 1;
 int min_distance, max_distance;
 
-void setup() {
+void setup()
+{
   min_distance = 1;
   max_distance = 3;
   bleMouse.begin();
 }
 
-void loop() {
-
+void loop()
+{
   int distance = random(min_distance, max_distance);
   int x = random(X_RANDOM_RANGE) - 1;
   int y = random(Y_RANDOM_RANGE) - 1;
 
-  for (int i = 0; i < distance; i++) {
+  for (int i = 0; i < distance; i++)
+  {
     bleMouse.move(x, y, 0);
     delay(move_interval);
   }
 
-  if (random(0, 7) == 3)
-    bleMouse.click(MOUSE_RIGHT);
+  // if (random(0, 7) == 3)
+  //   bleMouse.click(MOUSE_RIGHT);
 
   delay(loop_interval);
 }
